@@ -43,8 +43,8 @@ def process_final_results(
         SELECT 
             player_nickname,
             SUM(challenge_points)::integer AS total_points,
-            row_number() OVER (ORDER BY total_points DESC) AS position,
             SUM(total_score)::integer AS sum_scores, 
+            row_number() OVER (ORDER BY total_points DESC, sum_scores DESC) AS position,
             -- game_map, 
             -- game_token, 
             -- total_distance,
